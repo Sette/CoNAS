@@ -42,58 +42,20 @@ cd cnn && python test_imagenet.py --auxiliary --model_path imagenet_model.pt
 ## Architecture search (using small proxy models)
 To carry out architecture search using 2nd-order approximation, run
 ```
-cd cnn && python train_search.py --unrolled     # for conv cells on CIFAR-10
-cd rnn && python train_search.py --unrolled     # for recurrent cells on PTB
-```
-Note the _validation performance in this step does not indicate the final performance of the architecture_. One must train the obtained genotype/architecture from scratch using full-sized models, as described in the next section.
+cd cnn_space1 && python train_search.py      # for conv cells on CIFAR-10
+cd cnn_space2 && python train_search.py      # for conv cells on CIFAR-10
+cd cnn_space3 && python train_search.py      # for conv cells on CIFAR-10
 
-Also be aware that different runs would end up with different local minimum. To get the best result, it is crucial to repeat the search process with different seeds and select the best cell(s) based on validation performance (obtained by training the derived cell from scratch for a small number of epochs). Please refer to fig. 3 and sect. 3.2 in our arXiv paper.
+## Test all models
+The easist way to get started is to evaluate our DARTS models.
 
-<p align="center">
-<img src="img/progress_convolutional_normal.gif" alt="progress_convolutional_normal" width="29%">
-<img src="img/progress_convolutional_reduce.gif" alt="progress_convolutional_reduce" width="35%">
-<img src="img/progress_recurrent.gif" alt="progress_recurrent" width="33%">
-</p>
-<p align="center">
-Figure: Snapshots of the most likely normal conv, reduction conv, and recurrent cells over time.
-</p>
+cd cnn_space1 && python test_all.py      # for conv cells on CIFAR-10
+cd cnn_space2 && python test_all.py      # for conv cells on CIFAR-10
+cd cnn_space3 && python test_all.py     # for conv cells on CIFAR-10
 
-## Architecture evaluation (using full-sized models)
-To evaluate our best cells by training from scratch, run
-```
-cd cnn && python train.py --auxiliary --cutout            # CIFAR-10
-cd rnn && python train.py                                 # PTB
-cd rnn && python train.py --data ../data/wikitext-2 \     # WT2
-            --dropouth 0.15 --emsize 700 --nhidlast 700 --nhid 700 --wdecay 5e-7
-cd cnn && python train_imagenet.py --auxiliary            # ImageNet
-```
-Customized architectures are supported through the `--arch` flag once specified in `genotypes.py`.
+To run the ensemble:
 
-The CIFAR-10 result at the end of training is subject to variance due to the non-determinism of cuDNN back-prop kernels. _It would be misleading to report the result of only a single run_. By training our best cell from scratch, one should expect the average test error of 10 independent runs to fall in the range of 2.76 +/- 0.09% with high probability.
+python test_ensemble.py
 
-<p align="center">
-<img src="img/cifar10.png" alt="cifar10" width="36%">
-<img src="img/imagenet.png" alt="ptb" width="29%">
-<img src="img/ptb.png" alt="ptb" width="30%">
-</p>
-<p align="center">
-Figure: Expected learning curves on CIFAR-10 (4 runs), ImageNet and PTB.
-</p>
 
-## Visualization
-Package [graphviz](https://graphviz.readthedocs.io/en/stable/index.html) is required to visualize the learned cells
-```
-python visualize.py DARTS
-```
-where `DARTS` can be replaced by any customized architectures in `genotypes.py`.
 
-## Citation
-If you use any part of this code in your research, please cite our [paper](https://arxiv.org/abs/1806.09055):
-```
-@article{liu2018darts,
-  title={DARTS: Differentiable Architecture Search},
-  author={Liu, Hanxiao and Simonyan, Karen and Yang, Yiming},
-  journal={arXiv preprint arXiv:1806.09055},
-  year={2018}
-}
-```
