@@ -45,10 +45,10 @@ To carry out architecture search using 2nd-order approximation, run
 cd cnn_space1 && python train_search.py      # for conv cells on CIFAR-10
 cd cnn_space2 && python train_search.py      # for conv cells on CIFAR-10
 cd cnn_space3 && python train_search.py      # for conv cells on CIFAR-10
-
+```
 ## Test all models
 The easist way to get started is to evaluate our DARTS models.
-
+```
 cd cnn_space1 && python test_all.py      # for conv cells on CIFAR-10
 cd cnn_space2 && python test_all.py      # for conv cells on CIFAR-10
 cd cnn_space3 && python test_all.py     # for conv cells on CIFAR-10
