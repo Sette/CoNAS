@@ -1,4 +1,4 @@
-# Differentiable Architecture Search
+# Committee of NAS-based models
 Code accompanying the paper
 > [DARTS: Differentiable Architecture Search](https://arxiv.org/abs/1806.09055)\
 > Hanxiao Liu, Karen Simonyan, Yiming Yang.\
@@ -56,6 +56,6 @@ cd cnn_space3 && python test_all.py     # for conv cells on CIFAR-10
 ## To run the ensemble
 ```
 python test_ensemble.py
-
+```
 
 
