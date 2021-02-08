@@ -52,9 +52,9 @@ The easist way to get started is to evaluate our DARTS models.
 cd cnn_space1 && python test_all.py      # for conv cells on CIFAR-10
 cd cnn_space2 && python test_all.py      # for conv cells on CIFAR-10
 cd cnn_space3 && python test_all.py     # for conv cells on CIFAR-10
-
-To run the ensemble:
-
+```
+## To run the ensemble
+```
 python test_ensemble.py
 
 
