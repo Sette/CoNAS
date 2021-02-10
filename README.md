@@ -32,7 +32,7 @@ cd cnn_space3 && python test_all.py     # for conv cells on CIFAR-10
 ```
 python test_ensemble.py
 ```
-## To run transfer learnign in imagenette
+## To run transfer learning in imagenette
 ```
 cd darts_imagenette/cnn && python train_imagenette.py      # for conv cells on CIFAR-10
 cd darts_imagenette/cnn_space1 && python train_imagenette.py      # for conv cells on CIFAR-10
