@@ -3,7 +3,7 @@
 <p align="center">
   <img src="img/darts.png" alt="darts" width="48%">
 </p>
-The algorithm is based on continuous relaxation and gradient descent in the architecture space. It is able to efficiently design high-performance convolutional architectures for image classification (on CIFAR-10 and ImageNet).
+The algorithm is based on continuous relaxation and gradient descent in the architecture space. It is able to efficiently design high-performance convolutional architectures for image classification (on CIFAR-10 and Imagenette).
 
 ## Requirements
 ```
