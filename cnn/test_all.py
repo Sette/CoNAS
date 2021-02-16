@@ -110,7 +110,7 @@ for model_name in models_names:
     model.drop_path_prob = args.drop_path_prob
     logits_all, test_acc, test_obj = infer(test_queue, model, criterion)
     logging.info('test_acc %f', test_acc)
-    pickle.dump(logits_all, open( "logits_"+str(i)+".p", "wb" ))
+    pickle.dump("search-EXP/"+logits_all, open( "logits_"+str(i)+".p", "wb" ))
     i += 1
 
 if __name__ == '__main__':
