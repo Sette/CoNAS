@@ -4,7 +4,6 @@ Genotype = namedtuple('Genotype', 'recurrent concat')
 
 PRIMITIVES = [
     'none',
-    'tanh',
     'relu',
     'sigmoid',
     'identity'
